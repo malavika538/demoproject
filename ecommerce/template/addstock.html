@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container ">
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="card mx-auto mt-5" style="width: 25rem;">
+  <div class="card-body ">
+    <h1 class="text-center">ADD STOCK </h1>
+  <div class="mb-3">
+    <label  class="form-label"></label>
+    <input type="number" class="form-control" name="ad" value="{{pro.stock}}"></div>
+
+
+
+  <div class="mb-3">
+    <input type="submit" class="form-control hvr-hover"></div></div></div>
+</form></div>
+
+{% endblock %}

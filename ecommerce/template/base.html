@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<title>Fresh Fruits</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- favicon -->
+	<link rel="{% static 'shortcut icon" type="image/png" href="assets/img/favicon.png' %}">
+	<!-- google font -->
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' %}" rel="stylesheet">
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap' %}" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+</head>
+
+<body>
+<div class="top-header-orange" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="{% static 'index.html' %}">
+								<img src="{% static 'assets/img/logo.png' %}" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu ms-auto" style="text-color:red;">
+							<ul>
+				<li class="current-list-item"><a href="{% url 'shop:categories' %}">Home</a>
+				</li>
+
+				<li class="current-list-item"><a href="#">All Categories</a>
+									<ul class="sub-menu">
+
+										{% for i in links %}
+										<li><a href="{% url 'shop:product' i.id %}">{{i.name}}</a></li>
+										{% endfor %}
+
+										</ul>
+								</li>
+
+								{% if user.is_authenticated %}
+
+								<li class="current-list-item"><a href="about.html">About</a></li>
+
+								<li class="current-list-item"><a href="contact.html">Contact</a></li>
+								<li class="current-list-item"><a href="shop.html">Shop</a>
+									<ul class="sub-menu current-list-item">
+										<li><a href="shop.html">Shop</a></li>
+<!--										<li><a href="checkout.html">Check Out</a></li>-->
+<!--										<li><a href="cart.html">Cart</a></li>-->
+									</ul>
+								</li>
+								<li class="nav-item current-list-item">
+          <a class="nav-link" href="{% url 'shop:logout' %}">Logout</a>
+        			</li>
+								<li class="current-list-item">
+									<div class="header-icons">
+										<a class="current-list-item shopping-cart" href="{% url 'cart:cart_view' %}"><i class="fas fa-shopping-cart"></i><sup class="mx-2 fs-5">{{c}}</sup></a>
+										<a class="current-list-item mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<div class="mobile-menu"></div>
+
+				 {% else %}
+
+		<li class="nav-item current-list-item">
+          <a class="nav-link" href="{% url 'shop:register' %}">Register</a>
+        </li>
+          <li class="nav-item current-list-item">
+          <a class="nav-link" href="{% url 'shop:login' %}">Login</a>
+        </li>
+						{% endif %}
+
+
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <div class="search-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                        <div class="search-bar">
+                            <div class="search-bar-tablecell">
+                                <h3>Search For:</h3>
+                                <input type="text" placeholder="Keywords">
+                                <button type="submit">Search <i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% block content %}
+
+{% endblock %}
+
+<div class="footer-area  p-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p>Farm Fresh Organic Fruits</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>Ernakulam</li>
+							<li>Kothamangalam</li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="services.html">Shop</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Subscribe</h2>
+						<p>Subscribe to our mailing list to get the latest updates.</p>
+						<form action="index.html">
+							<input type="email" placeholder="Email">
+							<button type="submit"><i class="fas fa-paper-plane"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'assets/js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'assets/js/sticker.js' %}"></script>
+	<!-- main js -->
+	<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>
